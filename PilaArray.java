@@ -1,10 +1,11 @@
 public class PilaArray<E> extends Pila<E> {
     private E[] lista;
     private int tam;
+    private int max = 100;
 
     public PilaArray() {
-        lista = (E[]) new Object[100];
-        tam = 0;
+        lista = (E[]) new Object[max];
+        tam = -1;
     }
 
     /**
@@ -14,23 +15,48 @@ public class PilaArray<E> extends Pila<E> {
      */
     @Override
     public E pop() {
-        return lista[--tam];
-    }
+        try{
+            if(tam == -1){
+                System.out.println("Stack OverFlow1");
+                return null;
+            }
+            else {
+                System.out.println("\n item popped: " + lista[tam--]);
+                if (tam!=-1){
+                    return lista[tam--];
+                }
+
+            }
+        }
+        catch (Exception e){
+
+        }
+            return lista[0] ;
+        }
 
     /**
      * muestra el primer elemento de la pila
      */
     @Override
-    public E peek() {
-        return lista[0];
-    }
+    public E  peek()
+    {
+            if (tam < 0) {
+                System.out.println("Stack Underflow23");
+                return null;
+            }
+            else {
+                E x = lista[tam];
+                return x;
+            }
+        }
+
 
     /**
      * muestra si la pila esta vacia
      */
     @Override
     public boolean empty() {
-        return (lista.length == 0);
+        return (tam<0);
     }
 
     /**
@@ -38,7 +64,7 @@ public class PilaArray<E> extends Pila<E> {
      */
     @Override
     public int size() {
-        return lista.length;
+        return tam;
     }
 
     /**
@@ -46,12 +72,15 @@ public class PilaArray<E> extends Pila<E> {
      */
     @Override
     public void push(E item) {
-        if (tam == lista.length) {
-            Object[] tmp = new Object[2 * tam];
-            System.arraycopy(lista, 0, tmp, 0, tam - 1);
-            lista = (E[]) tmp;
+        if (tam == max -1) {
+            System.out.println("Stack Overflow4");
+
         }
-        lista[tam++] = item;
+        else{
+            tam++;
+            lista[tam]=item;
+        }
+
     }
 
 }

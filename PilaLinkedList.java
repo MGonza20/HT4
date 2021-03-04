@@ -2,29 +2,34 @@ import java.util.LinkedList;
 
 public class PilaLinkedList<E> extends Pila<E>{
     // Variable en la cual se va a guardar el valor.
-    private int valor;
+    private E valor;
     // Variable para enlazar los nodos.
-    private PilaLinkedList siguiente;
+    protected Nodo inicio,fin;
+    private  int count;
+
 
     public void PilaLinkedList(){
-        this.valor = 0;
-        this.siguiente = null;
+        inicio = null;
+        fin = null;
     }
 
     /**
      * elimina el primer elemento de la pila
      */
     @Override
-    public Object pop() {
-        return null;
+    public E pop() {
+        Nodo<E> temp = inicio;
+        inicio= inicio.getSiguiente(); // move head down list
+        count--;
+        return temp.getDato();
     }
 
     /**
      * muestra el primer elemento de la pila
      */
     @Override
-    public Object peek() {
-        return null;
+    public E peek() {
+        return (E) inicio.getDato();
     }
 
     /**
@@ -32,7 +37,12 @@ public class PilaLinkedList<E> extends Pila<E>{
      */
     @Override
     public boolean empty() {
-        return false;
+
+        if (inicio == null) {
+            return false;
+        }else {
+            return true;
+        }
     }
 
     /**
@@ -40,7 +50,17 @@ public class PilaLinkedList<E> extends Pila<E>{
      */
     @Override
     public int size() {
-        return 0;
+        // number of elements we've seen in list
+        int elementCount = 0;
+// reference to potential first element
+        Nodo<E> finger = inicio;
+        while (finger != null) {
+// finger references a new element, count it
+            elementCount++;
+// reference possible next element
+            finger = finger.getSiguiente();
+        }
+        return elementCount;
     }
 
     /**
@@ -48,6 +68,8 @@ public class PilaLinkedList<E> extends Pila<E>{
      */
     @Override
     public void push(Object item) {
+        inicio = new Nodo(valor, inicio);
+        count++;
 
     }
 }
