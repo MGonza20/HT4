@@ -9,12 +9,17 @@ public class PilaLinkedList<E> extends Pila<E>{
 
 
     public void PilaLinkedList(){
-        inicio = null;
-        fin = null;
+        this.inicio = null;
+
     }
 
     /**
      * elimina el primer elemento de la pila
+     * if(!esVacia()){
+     * 			fin.siguiente=new Nodo(valor);
+     * 			fin = fin.siguiente;
+     *                }else {
+     * 			insertarInicio(valor);
      */
     @Override
     public E pop() {
@@ -22,6 +27,7 @@ public class PilaLinkedList<E> extends Pila<E>{
         inicio= inicio.getSiguiente(); // move head down list
         count--;
         return temp.getDato();
+
     }
 
     /**
@@ -29,7 +35,13 @@ public class PilaLinkedList<E> extends Pila<E>{
      */
     @Override
     public E peek() {
-        return (E) inicio.getDato();
+        if (!empty()) {
+            return (E) inicio.getDato();
+        } else {
+            System.out.println("Stack is empty");
+            Character c = 'd';
+            return (E) c;
+        }
     }
 
     /**
@@ -39,9 +51,9 @@ public class PilaLinkedList<E> extends Pila<E>{
     public boolean empty() {
 
         if (inicio == null) {
-            return false;
-        }else {
             return true;
+        }else {
+            return false;
         }
     }
 
@@ -68,8 +80,8 @@ public class PilaLinkedList<E> extends Pila<E>{
      */
     @Override
     public void push(Object item) {
-        inicio = new Nodo(valor, inicio);
+        inicio = new Nodo(item, inicio);
         count++;
+        }
 
-    }
 }

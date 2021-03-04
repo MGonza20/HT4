@@ -1,11 +1,11 @@
+import java.util.Vector;
+
 public class PilaArray<E> extends Pila<E> {
-    private E[] lista;
-    private int tam;
-    private int max = 100;
+    private Vector<E> lista;
+
 
     public PilaArray() {
-        lista = (E[]) new Object[max];
-        tam = -1;
+        lista = new Vector<E>();
     }
 
     /**
@@ -15,24 +15,8 @@ public class PilaArray<E> extends Pila<E> {
      */
     @Override
     public E pop() {
-        try{
-            if(tam == -1){
-                System.out.println("Stack OverFlow1");
-                return null;
-            }
-            else {
-                System.out.println("\n item popped: " + lista[tam--]);
-                if (tam!=-1){
-                    return lista[tam--];
-                }
-
-            }
-        }
-        catch (Exception e){
-
-        }
-            return lista[0] ;
-        }
+        return lista.remove(lista.size()-1);
+    }
 
     /**
      * muestra el primer elemento de la pila
@@ -40,14 +24,7 @@ public class PilaArray<E> extends Pila<E> {
     @Override
     public E  peek()
     {
-            if (tam < 0) {
-                System.out.println("Stack Underflow23");
-                return null;
-            }
-            else {
-                E x = lista[tam];
-                return x;
-            }
+            return lista.firstElement();
         }
 
 
@@ -56,7 +33,7 @@ public class PilaArray<E> extends Pila<E> {
      */
     @Override
     public boolean empty() {
-        return (tam<0);
+        return lista.isEmpty();
     }
 
     /**
@@ -64,7 +41,7 @@ public class PilaArray<E> extends Pila<E> {
      */
     @Override
     public int size() {
-        return tam;
+        return lista.size();
     }
 
     /**
@@ -72,14 +49,8 @@ public class PilaArray<E> extends Pila<E> {
      */
     @Override
     public void push(E item) {
-        if (tam == max -1) {
-            System.out.println("Stack Overflow4");
+       lista.addElement(item);
 
-        }
-        else{
-            tam++;
-            lista[tam]=item;
-        }
 
     }
 

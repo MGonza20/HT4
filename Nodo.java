@@ -27,7 +27,7 @@ public class Nodo<E> {
     public void setSiguiente(Nodo siguiente){
         this.siguiente = siguiente;
     }
-    
+
     public void setNuevoNodo(Nodo nuevoNodo){
         siguiente = nuevoNodo;
     }

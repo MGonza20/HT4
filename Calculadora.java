@@ -49,7 +49,9 @@ public class Calculadora<E> {
             }
         }
         for (int i = 0; i <=pila.size() ; i++) {
+
             resultado += pila.pop();
+            System.out.println(resultado);
         }
         System.out.println(resultado);
         return resultado;
@@ -139,7 +141,7 @@ public class Calculadora<E> {
         // TODO Auto-generated method stub
         ArrayList<String> operacion = new ArrayList<String>();
         try {
-            FileReader fr = new FileReader("C:\\Users\\sarap\\IdeaProjects\\HT4algo\\Infix.txt");// Objeto para que establece origen de los datos
+            FileReader fr = new FileReader("C:\\Users\\50246\\IdeaProjects\\HT4\\Infix.txt");// Objeto para que establece origen de los datos
             BufferedReader entrada = new BufferedReader(fr); // buffer para el manejo de los datos
             String s;
             while((s = entrada.readLine()) != null)// leer linea a linea
